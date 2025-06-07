@@ -76,10 +76,15 @@ It’s always improving to meet **security** and **functionality standards**.
 ## 🌟 A Bit of History
 
 - **Kubernetes was created at Google** when they worked on a tool called **Borg**.  
-- Today, it’s managed by the **CNCF (Cloud Native Computing Foundation)**, an open-source community that also helps improve Docker and related tools.  
-- For example, Kubernetes doesn’t have advanced load balancing on its own (it only supports basic round-robin balancing).  
-- So, Kubernetes allows apps like **NGINX** and **HAProxy** to create their own load balancers (via custom resources and custom controllers).  
-- That’s how the **Ingress load balancer** was introduced!
+- Kubernetes has basic load balancing by default (round-robin for services).
+- But for more advanced routing and load balancing, Kubernetes uses Ingress.
+- Ingress is just a set of rules for how to handle incoming traffic.
+- The actual work is done by Ingress Controllers (like NGINX or HAProxy) which are added by the community.Ingress itself is just the set of rules (YAML); the controller is the engine that applies them.
+- That’s how Kubernetes extends its capabilities to include advanced load balancing, HTTPS termination, and routing.
 
 ---
 
+## 🌟 Kubernetes vs Docker Swarm
+
+
+<img width="1264" alt="Screenshot 2025-06-07 at 11 42 33 AM" src="https://github.com/user-attachments/assets/ae917e20-6b2c-407e-b5c0-bc63ddbfd629" />
