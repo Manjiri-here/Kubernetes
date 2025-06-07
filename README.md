@@ -1,4 +1,5 @@
-Kubernetes
+# Kubernetes
+
 Docker is a platform for creating and running containers.
 Kubernetes (K8s) is a container orchestration platform.
 In simple words, Kubernetes manages and coordinates containers.
