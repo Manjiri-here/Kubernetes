@@ -44,7 +44,7 @@ Think of it like this:
 
 # 🔷 Why is the Control Plane (Master Node) Needed?
 
-The Control Plane manages the entire Kubernetes cluster.  
+The Control Plane manages the entire Kubernetes cluster. Instructions that are required are provided to master node and they pass it on to worker node. 
 It defines **standard policies**, like deciding on which node a Pod should be created.
 
 ---
@@ -60,10 +60,10 @@ It defines **standard policies**, like deciding on which node a Pod should be cr
 ✅ **Scheduler**  
 - The **API Server** decides which node is free.  
 - The **Scheduler** actually schedules the Pod on that node.  
-- So: API Server makes the decision; Scheduler acts on it.
+- So: API Server makes the decision; Scheduler acts on it. 
 
 ✅ **etcd**  
-- The **backing store** for all Kubernetes data.  
+- The **backing store** for all Kubernetes data. It will keep all information about K8s cluster- what is running, what is stopped, what is error prone, which all pods are running, its statuses, etc. 
 - A **key-value store** that stores configuration and state.
 
 ✅ **Controller Manager**  
@@ -76,3 +76,19 @@ It defines **standard policies**, like deciding on which node a Pod should be cr
 - CCM is an **open-source** utility (it has a GitHub repo).  
 - You can write custom code for your cloud provider.  
 - **Not needed** for on-premise Kubernetes; only used when running on cloud.
+
+## 📌 Notes
+
+- **Nodes**  
+  - Nodes are like EC2 instances or servers.
+
+- **Pod**  
+  - A Pod is like a boundary.  
+  - Inside your Pod, the container will be sitting and inside the container, your application will be running.  
+  - You launch a Pod on any one of the nodes.  
+  - A Pod is an **encapsulation**—it creates an environment to run a container.  
+  - It’s a **good practice** to launch **one container per Pod**, not more. You can have agents inside, but not more containers.
+
+- **kubectl**  
+  - Command Line Interface for Kubernetes (K8s).
+
