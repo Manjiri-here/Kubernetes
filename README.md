@@ -11,6 +11,9 @@ Docker has some limitations that Kubernetes helps to solve:
 ➡️ Docker containers are ephemeral—they can die or restart at any time.
 ➡️ If one container uses too much memory, it affects other containers on the same host (because of how Linux works).
 
+<img width="1264" alt="Screenshot 2025-06-07 at 11 42 33 AM" src="https://github.com/user-attachments/assets/efe440b8-9291-4349-a432-c338a4e21331" />
+
+
 👉 How Kubernetes solves this:
 Kubernetes uses a cluster (a group of servers).
 
