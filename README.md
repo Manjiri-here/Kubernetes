@@ -86,5 +86,5 @@ It’s always improving to meet **security** and **functionality standards**.
 
 ## 🌟 Kubernetes vs Docker Swarm
 
+<img width="787" alt="Screenshot 2025-06-07 at 12 33 50 PM" src="https://github.com/user-attachments/assets/43890808-92b6-45e4-9166-d25c476a57e3" />
 
-<img width="1264" alt="Screenshot 2025-06-07 at 11 42 33 AM" src="https://github.com/user-attachments/assets/ae917e20-6b2c-407e-b5c0-bc63ddbfd629" />
