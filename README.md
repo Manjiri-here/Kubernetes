@@ -4,6 +4,8 @@
 **Kubernetes** (K8s) is a **container orchestration platform**.  
 In simple words, Kubernetes manages and coordinates containers.
 
+For kubernetes , comtainer is required component to run workloads, but not necessary that the container is built using dokcer only.
+
 ---
 
 ## 🟡 Why use Kubernetes instead of Docker?
