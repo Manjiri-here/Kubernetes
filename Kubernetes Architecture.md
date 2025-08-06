@@ -92,5 +92,5 @@ It defines **standard policies**, like deciding on which node a Pod should be cr
   - It’s a **good practice** to launch **one container per Pod**, not more. You can have agents inside, but not more containers.
 
 - **kubectl**  
-  - Command Line Interface for Kubernetes (K8s).
+  - Command Line Interface for Kubernetes (K8s). (Like terminal in linux)
 
