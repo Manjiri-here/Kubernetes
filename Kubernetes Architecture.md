@@ -28,7 +28,7 @@ In Docker, you have a server. You install Docker there and run a container. But 
 Similarly, in Kubernetes, the **Container Runtime** is the essential component.  
 It’s required to run the container.
 
-Kubernetes used docker as default comtainer runtime in previous versions. But since K8s version 1.20+ docker is not compliant with kubernetes Container Runtime Interface (CRI). Hence K8s introduced support for runtimes like- dockerd and CRI-O.
+Kubernetes used docker as default container runtime in previous versions. But since K8s version 1.20+ docker is not compliant with kubernetes Container Runtime Interface (CRI). Hence K8s introduced support for runtimes like- dockerd and CRI-O.
 
 Think of it like this:  
 - Java needs the **Java Runtime** to run Java applications.  
