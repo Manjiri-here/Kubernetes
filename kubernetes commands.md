@@ -1,12 +1,13 @@
-kubernetes commands
+# kubernetes commands
+
+# kubectl explain-
 
 $ kubectl explain <resource name like pod, node, service, deployment>    # used to list more information about the resource
-
 For ex: $ kubectl explain pod                                            # gives you information about what pod is as below. It is documentation in short!
 
 <img width="1253" height="761" alt="Image" src="https://github.com/user-attachments/assets/e46a41bf-1dd7-437b-98a6-1e1a303f5c54" />
 
-Kubectl aliases-
+# Kubectl aliases-
 
 These can be added to your ~/.bashrc or ~/.zshrc so they’re always available in your terminal session. Reload your shell (source ~/.bashrc) and your muscle memory will start kicking in, cutting command execution time dramatically.
 
