@@ -1,5 +1,5 @@
 kubernetes commands
 
 $ kubectl explain <resource name like pod, node, service, deployment>    # used to list more information about
-For ex: $ kubectl explain pod     # gives you information about what pod is as below
+For ex: $ kubectl explain pod     # gives you information about what pod is as below. It is documentation in short!
 
