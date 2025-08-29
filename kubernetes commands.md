@@ -15,9 +15,12 @@ You can see errors in pod in 'events' section of describe po command-
 <img width="1013" height="376" alt="Screenshot 2025-08-29 at 8 45 32 AM" src="https://github.com/user-attachments/assets/5595f5d2-e9b6-4bd5-9488-31b8927872fd" />
 
 
-$ kubectl run <pod-name-you-want> --image=<name-of-image>          ... To create pod from an image
+$ kubectl run <pod-name-you-want> --image=<imagename>          ... To create pod from an image
 
 $ kubectl describe po <podname>   ... you can check many details like how many containers are running inside pod, image from which pod is built, etc using this command.
+
+$ kubectl delete po <podname>
+
 
 # kubectl explain-
 
