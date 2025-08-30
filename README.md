@@ -1,5 +1,10 @@
 # Kubernetes
 
+Containers came into picture to eliminate the drawback of VMs. Which drawback? Of fixed coumpute resources like CPU and memory because of which the compute powers were not used efficiently in VMs. And they also eliminated bulky OS as containers use host OS kernel. Containers are ephimeral and helped to use server memory and CPU to the fullest, they optimize resource usage.
+In Docker or any container platform, we run our applications in containers instead of VMs. Because of this application becomes portable.
+
+Now containers have short life and are temporary.
+
 **Docker** is a platform for creating and running containers.  
 **Kubernetes** (K8s) is a **container orchestration platform**.  
 In simple words, Kubernetes manages and coordinates containers.
