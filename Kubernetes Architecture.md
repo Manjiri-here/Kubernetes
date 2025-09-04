@@ -10,7 +10,7 @@ This plane contains these components:
 4. **Controller Manager**
 5. **Cloud Controller Manager**
 
-✅ **Data Plane**  
+✅ **Data Plane** (Worker node)
 This plane contains these components:
 1. **Kubelet**
 2. **Proxy**
