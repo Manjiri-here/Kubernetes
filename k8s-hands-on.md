@@ -64,5 +64,6 @@ redis-master-85fd4bc5f-m7qn8        1/1     Running   1 (85d ago)   85d  
 
 <img width="1792" height="634" alt="Screenshot 2025-09-10 at 9 35 12 PM" src="https://github.com/user-attachments/assets/816a1653-40f1-4580-b161-8c671e7adceb" />
 
-<img width="547" height="107" alt="Screenshot 2025-09-11 at 4 28 30 PM" src="https://github.com/user-attachments/assets/416d4b4f-8b83-44c7-9361-82b095500da9" />
+<img width="566" height="166" alt="Screenshot 2025-09-11 at 4 28 39 PM" src="https://github.com/user-attachments/assets/8b6a31a7-5c2e-4c0e-9bde-f5eac76bf137" />
+
 
