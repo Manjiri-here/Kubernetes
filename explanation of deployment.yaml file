@@ -22,42 +22,34 @@ spec:
         ports:
         - containerPort: 8000
 
-Line-by-line and Concept Explanations
-Part	What It Is (“What this line is”)	What It Means / Why We Do It
-apiVersion: apps/v1	Declares version of Kubernetes API to use	tells Kubernetes which version of its functionality to use for this kind of object. “apps/v1” is the stable version for Deployments.
-kind: Deployment	Tells K8s what type of object this is	“Deployment” means this will manage pods for you, ensuring there are a certain number running, updating them, etc.
-metadata:	Data about this object itself	basic info so Kubernetes can refer to it (its name, labels about it).
-name: myapp-profile	Name of this deployment object	so you can refer to it (e.g., kubectl get deployment myapp-profile).
-labels: under metadata	Labels attached to the Deployment object	used for organizing, querying, maybe monitoring. But these labels are about the Deployment itself, not the pods.
-spec:	The “specification” of what you want to happen	describes how many replicas, what pods should look like, etc. The “desired state.”
-replicas: 3	You want 3 copies of your app running	so Kubernetes will try to always have 3 pods alive. If one crashes, it will spin up another.
-selector:	How Kubernetes finds the pods this Deployment should be managing	“selector” is like saying “which pods belong to me (this deployment)?”
-matchLabels: under selector	One way to define that selector via labels	you give key/value pairs that must match pod labels for pods to belong to this deployment.
-app: profile under matchLabels	A specific key/value pair the pods must have	pods must have label: app=profile for deployment to “see” them/manage them.
-template:	The template/blueprint for pods this Deployment will create	this tells Kubernetes what each of the pods should look like. Think of it like a cookie cutter.
-metadata: inside template	Data about pods created from this template	labels here, name etc., attached to pods themselves (not deployment object).
-labels: under template metadata	Labels that will be applied to those pods	essential: these must match what selector is expecting (matchLabels) so the deployment knows “these pods are mine.”
-app: profile under template labels	This gives each pod app=profile label	ensures those pods match selector, so deployment can track them.
-spec: under template	Details about what runs inside the pods	containers, images, ports, etc. Describes application container.
-containers: list	The actual containers that will run in the pods	you define what container image, what port it listens etc.
-- name: myapp-profile_containers	The name you assign to that container inside the pod	so logs / commands / metrics can refer to it.
-image: manjirinaik/docker-image-1:latest	Which Docker image to use for that container	that’s the code + dependencies for your app.
-ports: / containerPort: 8000	Which port the container listens on inside the pod	Kubernetes uses this for networking, so Services or probes know where to send traffic.
-Selector & matchLabels & Labels — Why They Must Match
+| Part                                       | What It Is (“What this line is”)                                 | What It Means / Why We Do It                                                                                                         |
+| ------------------------------------------ | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `apiVersion: apps/v1`                      | Declares version of Kubernetes API to use                        | tells Kubernetes which version of its functionality to use for this kind of object. “apps/v1” is the stable version for Deployments. |
+| `kind: Deployment`                         | Tells K8s what type of object this is                            | “Deployment” means this will manage pods for you, ensuring there are a certain number running, updating them, etc.                   |
+| `metadata:`                                | Data about this object itself                                    | basic info so Kubernetes can refer to it (its name, labels about it).                                                                |
+| `name: myapp-profile`                      | Name of this deployment object                                   | so you can refer to it (e.g., `kubectl get deployment myapp-profile`).                                                               |
+| `labels:` under metadata                   | Labels attached to the Deployment object                         | used for organizing, querying, maybe monitoring. But these labels are about the Deployment itself, not the pods.                     |
+| `spec:`                                    | The “specification” of what you want to happen                   | describes how many replicas, what pods should look like, etc. The “desired state.”                                                   |
+| `replicas: 3`                              | You want 3 copies of your app running                            | so Kubernetes will try to always have 3 pods alive. If one crashes, it will spin up another.                                         |
+| `selector:`                                | How Kubernetes finds the pods this Deployment should be managing | “selector” is like saying “which pods belong to me (this deployment)?”                                                               |
+| `matchLabels:` under selector              | One way to define that selector via labels                       | you give key/value pairs that must match pod labels for pods to belong to this deployment.                                           |
+| `app: profile` under matchLabels           | A specific key/value pair the pods must have                     | pods must have `label: app=profile` for deployment to “see” them/manage them.                                                        |
+| `template:`                                | The template/blueprint for pods this Deployment will create      | this tells Kubernetes what each of the pods should look like. Think of it like a cookie cutter.                                      |
+| `metadata:` inside template                | Data about pods created from this template                       | labels here, name etc., attached to pods themselves (not deployment object).                                                         |
+| `labels:` under template metadata          | Labels that will be applied to those pods                        | essential: these must match what selector is expecting (matchLabels) so the deployment knows “these pods are mine.”                  |
+| `app: profile` under template labels       | This gives each pod `app=profile` label                          | ensures those pods match selector, so deployment can track them.                                                                     |
+| `spec:` under template                     | Details about what runs inside the pods                          | containers, images, ports, etc. Describes application container.                                                                     |
+| `containers:` list                         | The actual containers that will run in the pods                  | you define what container image, what port it listens etc.                                                                           |
+| `- name: myapp-profile_containers`         | The name you assign to that container inside the pod             | so logs / commands / metrics can refer to it.                                                                                        |
+| `image: manjirinaik/docker-image-1:latest` | Which Docker image to use for that container                     | that’s the code + dependencies for your app.                                                                                         |
+| `ports:` / `containerPort: 8000`           | Which port the container listens on inside the pod               | Kubernetes uses this for networking, so Services or probes know where to send traffic.                                               |
+
 
 Selector + matchLabels act like a “filter” that Deployment uses to track which pods belong to it. If pods don’t match those labels, the Deployment will ignore them. (It won’t manage them.) 
-Kubernetes
-+2
-Server Fault
-+2
 
 The labels in the pod template (template.metadata.labels) must include the same key/value pairs that the selector requires. Otherwise, the Deployment won’t recognize its own pods. Kubernetes will either throw error or just won’t match them. 
-Riccardo Padovani
-+2
-Kubernetes
-+2
 
-Simple Analogy
+Simple Analogy-
 
 Think of a Deployment like a manager of a team:
 
