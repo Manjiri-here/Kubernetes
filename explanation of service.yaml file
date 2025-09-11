@@ -1,0 +1,58 @@
+Here’s your YAML again:
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: docker-demo-service
+spec:
+  type: NodePort
+  selector:
+    app: profile # this app value should match the app value for selector under deployment.yaml file
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000   # Should match your containerPort
+
+| Line(s)                       | What It’s Saying / Doing                                                                 | Why It’s Needed                                                                                       |
+| ----------------------------- | ---------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `apiVersion: v1`              | This tells Kubernetes which version of the API to use to understand this Service object. | Kubernetes evolves; this helps ensure compatibility.                                                  |
+| `kind: Service`               | Declares this object is a “Service” type.                                                | Kubernetes knows you are defining a Service (so it knows how to treat it).                            |
+| `metadata:`                   | Metadata is data ABOUT this Service object.                                              | It’s used to name, label or identify this service among many others.                                  |
+| `name: docker-demo-service`   | The name of this Service.                                                                | You’ll use this name when referring to the service (e.g., `kubectl get service docker-demo-service`). |
+| `spec:`                       | The specification: the details of what you want this Service to do.                      | Tells Kubernetes the configuration you desire.                                                        |
+| `type: NodePort`              | Defines how this Service should expose itself externally/internally.                     | NodePort opens a port on every node to allow external access.                                         |
+| `selector:`                   | Defines which Pods this Service will send traffic to.                                    | Without selector, the Service wouldn’t know which Pods to route to.                                   |
+| `app: profile` under selector | This is the key\:value label that must match Pods’ labels.                               | Ensures Service connects **only** to those Pods that have label `app: profile`.                       |
+| `ports:` / `- protocol: TCP`  | Describes which ports are used for connections (protocol = TCP).                         | Needed so Kubernetes knows which network protocol this Service will use.                              |
+| `port: 80`                    | The port the Service exposes **outside** (or inside) the cluster.                        | Clients will use this port to connect to your service.                                                |
+| `targetPort: 8000`            | The port inside the Pod/container where the app listens.                                 | Maps external Service port to the internal port your container uses.                                  |
+
+# Note : "Here, port 80 is what users call (accessible outside or from other pods), and traffic to port 80 is forwarded to port 8000 inside the Pod, where the app actually runs and responds."
+
+Why use NodePort here
+
+With NodePort, the Service is exposed on each Node’s IP address at a fixed port (in the NodePort range, usually 30000–32767). You can access your app using NodeIP:NodePort.
+
+Good for development / testing / demos on minikube or small clusters, because it doesn’t require cloud load balancers.
+
+It lets external clients (outside the cluster) reach your app directly.
+
+How to decide which Service type to use
+
+Here are common types and when to use them:
+
+ClusterIP (default) — when you need your app exposed only inside the cluster. For example, microservices talking to each other, DB internal access, etc. No exposure outside.
+
+NodePort — when you want external access but don’t have or don’t want a cloud load balancer. Works in minikube or small on-prem clusters. Simpler, but port numbers are high and you might need security/firewall rules.
+
+LoadBalancer — when deploying in a cloud environment and you want a public IP or DNS automatically managed by cloud provider (e.g. AWS ELB, GCP LB). Ideal for production externally exposed apps.
+
+Summary
+
+Your Service selects Pods labelled app: profile. That has to match the Deployment’s pod labels, so Service can forward to the correct pods.
+
+port: 80 is what users call; targetPort: 8000 is where your app listens inside the Pod.
+
+NodePort used here because probably you want outside access but you’re using minikube or a cluster without managed load balancers.
+
+If later you move to a cloud setup, you might change type to LoadBalancer for easier public access (with proper IP, DNS etc.).
