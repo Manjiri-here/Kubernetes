@@ -27,7 +27,7 @@ spec:
 | `port: 80`                    | The port the Service exposes **outside** (or inside) the cluster.                        | Clients will use this port to connect to your service.                                                |
 | `targetPort: 8000`            | The port inside the Pod/container where the app listens.                                 | Maps external Service port to the internal port your container uses.                                  |
 
-# Note : "Here, port 80 is what users call (accessible outside or from other pods), and traffic to port 80 is forwarded to port 8000 inside the Pod, where the app actually runs and responds."
+** Note ** : "Here, port 80 is what users call (accessible outside or from other pods), and traffic to port 80 is forwarded to port 8000 inside the Pod, where the app actually runs and responds."
 
 Why use NodePort here
 
