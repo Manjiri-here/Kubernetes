@@ -34,3 +34,15 @@ For ex: $ kubectl explain pod                                            # gives
 These can be added to your ~/.bashrc or ~/.zshrc so they’re always available in your terminal session. Reload your shell (source ~/.bashrc) and your muscle memory will start kicking in, cutting command execution time dramatically.
 
 <img width="786" height="936" alt="Image" src="https://github.com/user-attachments/assets/48e85285-fb99-447e-92b2-c396a2334fb5" />
+
+
+# Scale Deployment to Zero: 
+
+This stops all pods by scaling deployment replicas to zero:
+
+kubectl scale deployment <deployment-name> --replicas=0
+
+Example:
+kubectl scale deployment myapp-profile --replicas=0
+
+This keeps the deployment resource but no pods run, so your app stops working.
