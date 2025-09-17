@@ -42,6 +42,10 @@ This stops all pods by scaling deployment replicas to zero:
 
 kubectl scale deployment <deployment-name> --replicas=0
 
+Restarting pods/deployment-
+
+kubectl rollout restart deployment webapp-mysql -n delta  -- here -n delta is namespace and webapp-mysql is deployment name
+
 Example:
 kubectl scale deployment myapp-profile --replicas=0
 
