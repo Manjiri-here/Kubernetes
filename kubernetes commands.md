@@ -42,11 +42,27 @@ This stops all pods by scaling deployment replicas to zero:
 
 kubectl scale deployment <deployment-name> --replicas=0
 
-Restarting pods/deployment-
-
-kubectl rollout restart deployment webapp-mysql -n delta  -- here -n delta is namespace and webapp-mysql is deployment name
-
 Example:
 kubectl scale deployment myapp-profile --replicas=0
 
 This keeps the deployment resource but no pods run, so your app stops working.
+
+# Restarting pods/deployment-
+
+kubectl rollout restart deployment webapp-mysql -n delta  -- here -n delta is namespace and webapp-mysql is deployment name
+
+When you run kubectl rollout restart deployment webapp-mysql -n delta:
+
+-n delta is the namespace, and webapp-mysql is the deployment name.
+
+Kubernetes triggers a rolling restart of the deployment, meaning:
+
+New pods are started one at a time.
+
+Once a new pod is healthy and ready, an old pod is terminated.
+
+This repeats until all pods are replaced with fresh instances.
+
+Containers inside the pods are fully restarted—new processes start from scratch.
+
+The application inside the container is restarted as the new pod/container launches, running its entrypoint/command just like during initial deployment.
