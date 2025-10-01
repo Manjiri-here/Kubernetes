@@ -6,7 +6,11 @@ Steps I did to use k8s with docker:
  
 3. To start docker in Mac  - manjiri@Abhis-MacBook-Pro Docker-demo % open -a Docker 
 
-4. Now we push the image to docker hub  manjiri@Abhis-MacBook-Pro Docker-demo % docker login manjiri@Abhis-MacBook-Pro Docker-demo % docker tag myprofile:v1 manjirinaik/docker-image-1:latest      — tag the image to docker hub repo by creating a repo in docker hub 
+4. Now we push the image to docker hub  -
+
+manjiri@Abhis-MacBook-Pro Docker-demo % docker login 
+
+manjiri@Abhis-MacBook-Pro Docker-demo % docker tag myprofile:v1 manjirinaik/docker-image-1:latest      — tag the image to docker hub repo by creating a repo in docker hub 
 
 5. manjiri@Abhis-MacBook-Pro Docker-demo % docker push manjirinaik/docker-image-1:latest.   
 The push refers to repository [docker.io/manjirinaik/docker-image-1]
