@@ -22,6 +22,15 @@ $ kubectl describe po <podname>   ... you can check many details like how many c
 
 $ kubectl delete po <podname>
 
+# Essential diagnostic commands
+
+kubectl describe pod <pod-name>
+kubectl logs <pod-name>
+kubectl top nodes
+kubectl top pods
+
+Survival tip: Use kubectl get all for a quick cluster overview — it’s like hitting ctrl+shift+i in your browser: everything is revealed! 🕵️
+
 # kubectl explain-
 
 $ kubectl explain <resource name like pod, node, service, deployment>    # used to list more information about the resource
@@ -46,6 +55,12 @@ Example:
 kubectl scale deployment myapp-profile --replicas=0
 
 This keeps the deployment resource but no pods run, so your app stops working.
+
+# Horizontal scaling
+kubectl scale deployment my-awesome-app --replicas=10
+
+# Autoscaling based on CPU usage
+kubectl autoscale deployment my-awesome-app --cpu-percent=50 --min=1 --max=10
 
 # Restarting pods/deployment-
 
