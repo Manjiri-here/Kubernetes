@@ -81,3 +81,7 @@ This repeats until all pods are replaced with fresh instances.
 Containers inside the pods are fully restarted—new processes start from scratch.
 
 The application inside the container is restarted as the new pod/container launches, running its entrypoint/command just like during initial deployment.
+
+Most engineers immediately delete pods instead of checking scheduler events, this reminder will save hours of guesswork.Below are the commands to check scheduler events:
+$ kubectl get events --sort-by=.metadata.creationTimestamp
+$ kubectl describe pod <pod-name>
